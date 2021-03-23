@@ -1,7 +1,7 @@
 <h2>Log in - Admin</h2>
 
 <% flash.each do |key, value| %>
-  <div class="flash" <%=key %> ><%=valueapplication.html.erb %></div>
+  <div class="flash" <%=key %> ><%= value %></div>
 <% end %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
