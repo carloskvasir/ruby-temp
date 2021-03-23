@@ -1,0 +1,21 @@
+# 4.5 Translations for Active Record Models
+'pt-BR':
+  activerecord:
+    models:
+      admin:
+        one: Administrador
+        other: Administradores
+      profiles:
+        one: Perfil
+        other: Perfis
+    atributes:
+      admin:
+        id: Identificador
+        email: Email
+        created_at: Criado em
+        updated_at: Atualizado em
+      profile:
+        id: Identificador
+        email: Email
+        created_at: Criado em
+        updated_at: Atualizado em
