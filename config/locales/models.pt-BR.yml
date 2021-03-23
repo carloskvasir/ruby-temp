@@ -5,16 +5,16 @@
       admin:
         one: Administrador
         other: Administradores
-      profiles:
-        one: Perfil
-        other: Perfis
+      user:
+        one: Usuário
+        other: Usuários
     atributes:
       admin:
         id: Identificador
         email: Email
         created_at: Criado em
         updated_at: Atualizado em
-      profile:
+      user:
         id: Identificador
         email: Email
         created_at: Criado em
