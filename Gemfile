@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Specific Gems
 gem 'devise'
+gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
