@@ -24,24 +24,26 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <%= link_to admins_backoffice_welcome_index_path, :class => 'sidebar-brand d-flex align-items-center justify-content-center' do %>
       <div class="sidebar-brand-text mx-3">Backoffice Administrativo</div>
-    </a>
+    <% end %>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <%= link_to admins_backoffice_welcome_index_path, :class => 'nav-link' do %>
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Dashboard</span>
+      <% end %>
     </li>
     <!-- Nav Item - Administradores -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <%= link_to admins_backoffice_admins_index_path, :class => 'nav-link' do %>
         <i class="fas fa-fw fa-users"></i>
-        <span>Administradores</span></a>
+        <span>Administradores</span>
+      <% end %>
     </li>
 
     <!-- Divider -->
@@ -91,7 +93,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-              <img class="img-profile rounded-circle"
+              <img class="img-profile rounded-circle" alt="photo of perfil"
                    src="https://source.unsplash.com/aWVi7wTfLD0/60x60">
             </a>
             <!-- Dropdown - User Information -->
@@ -156,7 +158,7 @@
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class:"btn btn-primary" %>
+        <%= link_to 'Logout', destroy_admin_session_path, method: :delete, :class => 'btn btn-primary' %>
       </div>
     </div>
   </div>
