@@ -18,3 +18,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 #     sb-admin-2.js
 #     sb-admin-2.css
 #   )
+Rails.application.config.assets.precompile +=
+  %w(
+    users_backoffice.css
+    users_backoffice.js
+  )
