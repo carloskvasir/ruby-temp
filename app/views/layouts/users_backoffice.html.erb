@@ -156,9 +156,9 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
               <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+            <%= link_to destroy_user_session_path, method: :delete, "data-toggle" => "tooltip", "data-placement" => "top", :title =>"Logout" do %>
               <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-            </a>
+            <% end %>
           </div>
           <!-- /menu footer buttons -->
         </div>
@@ -183,7 +183,9 @@
                     <span>Settings</span>
                   </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
-                  <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                  <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
+                    <i class="fa fa-sign-out pull-right"></i> Log Out
+                  <% end %>
                 </div>
               </li>
 
