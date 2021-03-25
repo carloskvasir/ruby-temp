@@ -11,6 +11,10 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
     @admin = Admin.find(params[:id])
     params_admin = params.require(:admin).permit(:email, :password, :password_confirmation)
 
+    if params_admin[:password].blank? and params_admin[:password_confirmation].blank?
+      params_admin.extract!(:password, :password_confirmation)
+    end
+
     if @admin.update(params_admin)
           redirect_to admins_backoffice_admins_path, notice: 'Administrador atualizado com sucesso!'
     else
