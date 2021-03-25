@@ -21,17 +21,14 @@
       <tr>
         <th scope="row"><%= admin.id %></th>
         <td><%= admin.email %></td>
-        <td style="width: calc(55px * 2);">
-<!--          <button type="button" class="btn btn-primary btn-circle">-->
-<!--            <i class="fa fa-edit"></i>-->
-<!--          </button>-->
-
+        <td style="width: 110px;">
           <%= link_to edit_admins_backoffice_admin_path(admin), :class => "btn btn-primary btn-circle" do %>
             <i class="fa fa-edit"></i>
           <% end %>
-          <button type="button" class="btn btn-danger btn-circle">
+          <%= link_to admins_backoffice_admin_path(admin), method: :delete, :class => "btn btn-danger btn-circle",
+                      data: {confirm: 'Deseja realmente excluir esse administrador?'} do %>
             <i class="fa fa-minus"></i>
-          </button>
+          <% end %>
         </td>
       </tr>
       <% end %>
