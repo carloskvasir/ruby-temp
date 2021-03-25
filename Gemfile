@@ -30,6 +30,8 @@ gem 'devise'
 gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
 gem 'tty-spinner'
 gem 'faker'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

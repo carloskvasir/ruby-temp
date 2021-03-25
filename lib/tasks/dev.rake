@@ -38,7 +38,7 @@ namespace :dev do
 
   # Create 10 extras Admins
   def add_extras_admins
-    10.times do
+    20.times do
       Admin.create!(
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
