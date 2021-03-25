@@ -153,6 +153,17 @@
 <%= javascript_pack_tag 'application' %>
 <%= javascript_pack_tag 'admins_backoffice' %>
 <%= javascript_pack_tag 'sb-admin-2' %>
+
+<% if notice do%>
+  <%= javascript_tag %>
+    $.bootstrapGrowl('<%= notice %>', {
+      type: 'success', // (null, 'info', 'danger', 'success')
+      align: 'right', // ('left', 'right', or 'center')
+      allow_dismiss: true, // If true then will display a cross to close the popup.
+      stackup_spacing: 10 // spacing between consecutively stacked growls.
+    });
+  <% end %>
+<% end %>
 </body>
 
 </html>

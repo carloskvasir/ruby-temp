@@ -1,4 +1,6 @@
 global.jQuery = require('jquery');
-require('bootstrap/dist/js/bootstrap')
+global.$ = jQuery;
+global.bootstrap = require('bootstrap/dist/js/bootstrap')
 require('jquery.easing/jquery.easing');
-require('@fortawesome/fontawesome-free/js/all');
+fontawesome = require('@fortawesome/fontawesome-free/js/all');
+require('bootstrap-growl-ifightcrime/jquery.bootstrap-growl.min');
