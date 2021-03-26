@@ -12,4 +12,6 @@
  *
  *= require_self
  *= require @fortawesome/fontawesome-free/scss/fontawesome
+ *= require @syncfusion/ej2-base/styles/material.css
+ *= require @syncfusion/ej2-grids/styles/material.css
  */
