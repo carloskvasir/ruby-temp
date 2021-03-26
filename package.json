@@ -9,6 +9,7 @@
     "@rails/webpacker": "5.2.1",
     "@syncfusion/ej2-data": "^18.4.46",
     "@syncfusion/ej2-grids": "^18.4.49",
+    "@syncfusion/ej2-popups": "^18.4.44",
     "bootstrap": "4.5.3",
     "bootstrap-growl-ifightcrime": "^1.1.0",
     "chart.js": "2.9.4",

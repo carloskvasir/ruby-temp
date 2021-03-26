@@ -5,5 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # kaminare paginator, itens per page
-  paginates_per 5
+  # paginates_per 5
 end

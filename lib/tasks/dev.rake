@@ -9,7 +9,7 @@ namespace :dev do
       show_spinner("Migrate DB") {%x(rails db:migrate)}
       show_spinner("create adm") {%x(rails dev:add_default_admin)}
       show_spinner("create user") {%x(rails dev:add_default_user)}
-      show_spinner("Create extra admins") { add_extras_admins }
+      show_spinner("Create extra admins") {%x(rails dev:add_extras_admins)}
       show_spinner("Create extra users") { add_extras_users }
     else
       puts 'Run just in development'
@@ -34,11 +34,9 @@ namespace :dev do
     )
   end
 
-  private
-
-  # Create 10 extras Admins
-  def add_extras_admins
-    20.times do
+  desc 'Create 10 admins'
+  task add_extras_admins: :environment do
+    10.times do
       Admin.create!(
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
@@ -46,6 +44,9 @@ namespace :dev do
       )
     end
   end
+  private
+
+
 
   # Create 10 extras Users
   def add_extras_users
