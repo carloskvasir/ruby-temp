@@ -1037,7 +1037,7 @@
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-icons/-/ej2-icons-18.4.39.tgz#6e180b6fd85207c767f78ee86584c444d4236775"
   integrity sha512-l/FT5H12SSV2IwWbL39nrh5NwB8BpRdHoVOpG9/H4Ezs3q7zVAPgEMq+fAn5Tp1PBhl3cWYpSct7M2tJMSG49w==
 
-"@syncfusion/ej2-inputs@~18.4.47":
+"@syncfusion/ej2-inputs@^18.4.47", "@syncfusion/ej2-inputs@~18.4.47":
   version "18.4.47"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-inputs/-/ej2-inputs-18.4.47.tgz#e1bdad80795c0e2a96a83b98444b81975b58f44c"
   integrity sha512-ITxKNijcrEr2oO/u6RpFr5v7xHg81gDr2WIKq5oX1BXuCVLocMcjUzsOrvI/YG0xWgN6Jl8sh1+cfm8J3nu9FA==

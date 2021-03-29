@@ -3,9 +3,11 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
 
   def index
-    @admins = Admin.offset(params['$skip']).limit(params['$top'])
+    @q = Admin.ransack(params[:q])
+    to_count = @q.result(distinct: true)
+    @admins = to_count.offset(params['$skip']).limit(params['$top'])
 
-    @admins_total = Admin.count
+    @admins_total = to_count.count
   end
 
   def new

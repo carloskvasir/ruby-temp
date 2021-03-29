@@ -5,9 +5,15 @@
     </div>
   </div>
   <section >
-    <div class="control-section" data-controller='table' id="spinner">
+    <div class="control-section" data-controller='table'>
       <div class="content-wrapper">
-        <div id="Grid">
+        <%= search_form_for @q, url: url_for(action: 'index') do |f| %>
+
+          <%= f.label :email_field %>
+          <%= f.search_field :email_cont %>
+          <%= f.submit %>
+        <% end %>
+        <div id="Grid" data-url="<%= url_for(request.query_parameters.merge(format: 'json')) %>">
         </div>
       </div>
     </div>
