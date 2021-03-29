@@ -4,6 +4,11 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
 
   def index
     @q = Admin.ransack(params[:q])
+
+    if params['$orderby']
+      @q.sorts = params['$orderby']
+    end
+
     to_count = @q.result(distinct: true)
     @admins = to_count.offset(params['$skip']).limit(params['$top'])
 
