@@ -2,16 +2,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   before_action :set_subject, only: [:edit, :update, :destroy]
 
   def index
-    @q = Subject.ransack(params[:q])
-
-    if params['$orderby']
-      @q.sorts = params['$orderby']
-    end
-
-    to_count = @q.result(distinct: true)
-    @subjects = to_count.offset(params['$skip']).limit(params['$top'])
-
-    @subjects_total = to_count.count
+    @subjects = Subject.order(:description)
   end
 
   def new
