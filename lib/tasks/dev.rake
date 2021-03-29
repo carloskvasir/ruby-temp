@@ -13,6 +13,7 @@ namespace :dev do
       show_spinner("Create extra admins") {%x(rails dev:add_extras_admins)}
       show_spinner("Create extra users") { add_extras_users }
       show_spinner("Create default subjects") { create_default_subjects }
+      show_spinner("Create default questions") { create_default_questions }
     else
       puts 'Run just in development'
     end
@@ -68,6 +69,18 @@ namespace :dev do
       Subject.create_or_find_by(description: line.strip)
     end
   end
+
+  def create_default_questions
+    Subject.all.each do |subject|
+      rand(5..10).times do |i|
+        Question.create!(
+          description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+          subject: subject
+        )
+      end
+    end
+  end
+
 
   def show_spinner(msg_start, msg_end = "(done)")
     spinner = TTY::Spinner.new(":spinner  #{msg_start}", format: :dots)
