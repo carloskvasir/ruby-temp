@@ -8,7 +8,7 @@
   <thead class="thead">
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Descrição</th>
+    <th scope="col"><%= translate_attribute(@subjects, :description) %></th>
     <th>
       <%= link_to new_admins_backoffice_subject_path, class: "btn btn-success btn-circle" do %>
       <i class="fa fa-plus"></i>
