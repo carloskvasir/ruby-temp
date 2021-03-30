@@ -73,10 +73,23 @@ namespace :dev do
   def create_default_questions
     Subject.all.each do |subject|
       rand(5..10).times do |i|
-        Question.create!(
+        params = { question: {
           description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
-          subject: subject
-        )
+          subject: subject,
+          answers_attributes: []
+        }}
+
+        rand(2..5).times do |j|
+          params[:question][:answers_attributes].push(
+            { description: Faker::Lorem.sentence, correct: false}
+          )
+        end
+
+        index = rand(params[:question][:answers_attributes].size)
+        params[:question][:answers_attributes][index] =  {description: Faker::Lorem.sentence, correct: true}
+
+
+        Question.create!(params[:question])
       end
     end
   end
