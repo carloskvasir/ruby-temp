@@ -3,7 +3,7 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :get_subjects, only: [:edit, :new]
 
   def index
-    @questions = Question.order(:description)
+    @questions = Question.includes(:subject).order(:description)
   end
 
   def new
