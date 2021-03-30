@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Lista de Assuntos/Áreas</h1>
+    <h1 class="page-header"><%= t('messages.listing', model: @subjects.model_name.human(count: 2)) %></h1>
   </div>
 </div>
 
@@ -25,8 +25,10 @@
         <%= link_to edit_admins_backoffice_subject_url(subject), :class => "btn btn-primary btn-circle" do %>
           <i class="fa fa-edit"></i>
         <% end %>
-        <%= link_to admins_backoffice_subject_path(subject), method: :delete, :class => "btn btn-danger btn-circle", data:{confirm: "Deseja realmente excluir esse Assunto/Área?"} do %>
-          <i class="fa fa-minus"></i>
+        <%= link_to admins_backoffice_subject_path(subject),
+                    method: :delete, :class => "btn btn-danger btn-circle",
+                    data:{confirm: t('messages.confirm_with', item: subject.description.truncate(15))} do %>
+          <i class="fas fa-trash"></i>
         <% end %>
       </td>
     </tr>
