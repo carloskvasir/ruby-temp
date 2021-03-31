@@ -16,31 +16,39 @@
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
     <a class="navbar-brand" href="#">Time to Answer</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample03">
-      <ul class="navbar-nav mr-auto">
-        <% unless user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Entrar', new_user_session_path , class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Cadastrar-se', new_user_registration_path , class:"nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown">
-              <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
-                <i class= "fa fa-sighn-out fa-fw"></i> Sair
+    <div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav mr-auto">
+              <% unless user_signed_in? %>
+              <li class="nav-item">
+                  <%= link_to 'Entrar', new_user_session_path , class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to 'Cadastrar-se', new_user_registration_path , class:"nav-link" %>
+              </li>
+              <% else %>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown">
+                      <%= link_to users_backoffice_welcome_index_path, method: :delete, class:"dropdown-item" do %>
+                      <i class="fa fa-user fa-fw"></i> Perfil
+                      <% end %>
+
+
+                      <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
+                        <i class="fa fas-sign-out fa-fw"></i> Sair
+                      <% end %>
+                  </div>
+
+              </li>
               <% end %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+          </ul>
+      </div>
     </div>
   </nav>
 
@@ -52,5 +60,16 @@
 
   <%= javascript_pack_tag 'application' %>
   <%= javascript_pack_tag 'site' %>
+
+  <% if notice%>
+    <%= javascript_tag do %>
+      $.bootstrapGrowl('<%= notice %>', {
+      type: 'success', // (null, 'info', 'danger', 'success')
+      align: 'right', // ('left', 'right', or 'center')
+      allow_dismiss: true, // If true then will display a cross to close the popup.
+      stackup_spacing: 10 // spacing between consecutively stacked growls.
+      });
+    <% end %>
+  <% end %>
 </body>
 </html>
