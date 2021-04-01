@@ -11,6 +11,7 @@
   <%= form_with url: url_for(controller: "site/answer", action: "question"), local: false do |form| %>
     <div class="card mb-1">
       <div class="card-header">
+        <%= link_to question.subject.description, '#', class:"badge badge-primary"%>
         <%= question.description %>
       </div>
       <div class="card-body">
