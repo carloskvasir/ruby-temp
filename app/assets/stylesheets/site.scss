@@ -19,6 +19,10 @@ body {
   user-select: none;
 }
 
+div.card-body > ul > li {
+  list-style: none;
+}
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
