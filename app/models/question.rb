@@ -13,6 +13,11 @@ class Question < ApplicationRecord
            .page(page)
   }
 
+  # Search _term_ in subject of all questions with pagination
+  scope :search_in_subject, -> (subject_id, page = 0) {
+    includes(:answers, :subject).where(subject_id: subject_id).page(page)
+  }
+
   # Get latest created questions with pagination
   scope :latest_questions_in_page, -> (page) {
     includes(:answers)
