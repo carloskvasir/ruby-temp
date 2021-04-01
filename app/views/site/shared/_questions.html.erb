@@ -8,7 +8,7 @@
 </div>
 
 <% @questions.each do |question| %>
-  <%= form_with url: url_for(controller: "site/answer", action: "question"), local: true do |form| %>
+  <%= form_with url: url_for(controller: "site/answer", action: "question"), local: false do |form| %>
     <div class="card mb-1">
       <div class="card-header">
         <%= question.description %>
@@ -19,17 +19,16 @@
             <li>
             <div class="form-check">
               <label class="form-check-label">
-              <%= radio_button_tag 'answer_id', answer.id, class:"form-check-input" %>
+              <%= radio_button_tag 'answer_id', answer.id, class:"form-check-input"  %>
                 <%= answer.description %>
               </label>
             </div>
             </li>
           <% end %>
           <li>
-            <%= form.submit 'responder' , class:"btn btn-primary"%>
+            <%= form.submit 'responder', class:'btn btn-primary', id: "submit_#{question.id}" %>
           </li>
         </ul>
-
       </div>
     </div>
   <%end %>
