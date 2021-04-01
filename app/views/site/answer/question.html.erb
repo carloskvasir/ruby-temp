@@ -1,1 +1,7 @@
 <h1>O Id da resposta selecionada é: <%= params[:answer_id] %></h1>
+
+<% if @answer.correct %>
+  <h2>Parabéns você acertou! 🎉 🎉 🎉</h2>
+<% else %>
+  <h2>Infelismente você ERROU 😭 😭 😭</h2>
+<% end %>
