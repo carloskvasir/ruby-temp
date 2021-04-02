@@ -31,6 +31,8 @@ namespace :dev do
   desc 'Create default User'
   task add_default_user: :environment do
     User.create!(
+      first_name: 'Carlos',
+      last_name: 'Lima',
       email: 'user@user.com',
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD
@@ -63,6 +65,8 @@ namespace :dev do
   def add_extras_users
     10.times do
       User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
         password_confirmation: DEFAULT_PASSWORD
@@ -81,7 +85,7 @@ namespace :dev do
 
   def create_questions_and_answers
     Subject.all.each do |subject|
-      rand(5..10).times do |i|
+      rand(5..10).times do |_i|
         params = create_question_params(subject)
         answers_array = params[:question][:answers_attributes]
 
@@ -108,7 +112,7 @@ namespace :dev do
   end
 
   def add_answers(answers_array = [])
-    rand(2..5).times do |j|
+    rand(2..5).times do |_j|
       answers_array.push(
         create_answer_params(false)
       )
