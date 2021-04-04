@@ -51,9 +51,34 @@
             <div class="item form-group">
               <%= profile_form.label :gender, class:"col-form-label col-md-3 col-sm-3 label-align" %>
               <div class="col-md-6 col-sm-6 ">
-                <%= profile_form.text_field  :gender, class: 'form-control' %>
+                <div id="gender" class="btn-group" data-toggle="buttons">
+                  <label class="btn <%= gender_select(@user , 'M' ) %>" >
+                    <%= profile_form.radio_button  :gender, "M", "data-parsley-multiple":"gender", style:"width: 0; height:0;visibility: hidden;" %>Masculino
+                  </label>
+                  <label class="btn <%= gender_select(@user , 'F' ) %>" >
+                    <%= profile_form.radio_button  :gender, "F", "data-parsley-multiple":"gender", style:"width: 0; height:0;visibility: hidden;" %>Feminino
+                  </label>
+                </div>
               </div>
             </div>
+
+            <%= javascript_tag do %>
+                var labels = document.querySelectorAll('div#gender label');
+
+                labels.forEach((label) => {
+                    label.addEventListener('click', () => {
+                        label.classList.remove('btn-default')
+                        label.classList.add('btn-primary')
+
+                        labels.forEach((lbl) => {
+                            if(lbl !== label) {
+                              lbl.classList.remove('btn-primary')
+                              lbl.classList.add('btn-default')
+                            }
+                        })
+                    })
+                })
+            <% end %>
 
             <div class="item form-group">
               <%= profile_form.label :birthdate, class:"col-form-label col-md-3 col-sm-3 label-align" %>
