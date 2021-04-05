@@ -4,8 +4,8 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   def index
     respond_to do |format|
       format.html { @subjects = Subject.all.order(:description).page(params[:page]) }
-      format.pdf { @subjects = Subject.all.order(:description) }
-      format.json { render json: (@subjects = Subject.all.order(:description)), except: [:created_at, :updated_at, :questions_count] }
+      format.pdf  { @subjects = Subject.all.order(:description) }
+      format.json { @subjects = Subject.all.order(:description) }
     end
   end
 
