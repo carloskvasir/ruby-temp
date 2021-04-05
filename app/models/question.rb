@@ -7,7 +7,7 @@ class Question < ApplicationRecord
   after_create :set_statistic
 
   # Kaminari
-  paginates_per 5
+  paginates_per 25
 
   # Search _term_ in title of all questions with pagination
   scope :search_in_title, -> (term, page = 0) {
