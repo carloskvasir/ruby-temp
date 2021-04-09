@@ -6,7 +6,6 @@
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
-          </li>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -41,6 +40,16 @@
           </div>
 
           <%= form.fields_for :user_profile do |profile_form| %>
+            <div class="item form-group">
+              <%= profile_form.label :zip_code, class:"col-form-label col-md-3 col-sm-3 label-align" %>
+              <div class="col-md-6 col-sm-6 input-group">
+                <input type="text" class="form-control"/>
+                <span class="input-group-btn">
+								<button type="button" class="btn btn-primary">Procurar</button>
+							</span>
+              </div>
+            </div>
+
             <div class="item form-group">
               <%= profile_form.label :address, class:"col-form-label col-md-3 col-sm-3 label-align" %>
               <div class="col-md-6 col-sm-6 ">
