@@ -39,3 +39,6 @@
 yarn-debug.log*
 .yarn-integrity
 .idea/
+/config/database.yml
+.env
+public/templates
