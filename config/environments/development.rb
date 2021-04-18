@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require 'dotenv/load'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -40,6 +41,17 @@ Rails.application.configure do
 
   # devise config
   config.action_mailer.default_url_options = { host:'localhost', post: 3000 }
+
+  # Mailtrap Config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['user_name'],
+    :password => ENV['password'],
+    :address => ENV['address'],
+    :domain => ENV['domain'],
+    :port => ENV['port'],
+    :authentication => ENV['authentication']
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

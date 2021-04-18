@@ -26,10 +26,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Specific Gems
+gem 'cocoon'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'faker'
 gem 'kaminari'
 gem 'kaminari-i18n'
+gem 'prawn-rails'
 gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
 gem 'ransack'
 gem 'tty-spinner'

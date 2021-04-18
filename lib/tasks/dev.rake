@@ -1,5 +1,6 @@
 namespace :dev do
   DEFAULT_PASSWORD = 123456
+  DEFAULT_FILES_PATH = File.join(Rails.root, 'lib','tmp')
 
   desc "Configure the development environment"
   task setup: :environment do
@@ -29,6 +30,8 @@ namespace :dev do
   desc 'Create default User'
   task add_default_user: :environment do
     User.create!(
+      first_name: 'Carlos',
+      last_name: 'Lima',
       email: 'user@user.com',
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD
@@ -45,19 +48,79 @@ namespace :dev do
       )
     end
   end
+
+  desc 'Reset questions counter in Subject'
+  task reset_subject_counter: :environment do
+    show_spinner("Resetting subject counter") do
+      Subject.find_each do |subject|
+        Subject.reset_counters(subject.id, :questions)
+      end
+    end
+  end
+
   private
-
-
 
   # Create 10 extras Users
   def add_extras_users
     10.times do
       User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
         password_confirmation: DEFAULT_PASSWORD
       )
     end
+  end
+
+  def create_default_subjects
+    file_name = 'subjects.txt'
+    file_path = File.join(DEFAULT_FILES_PATH, file_name)
+
+    File.open(file_path, 'r').each do |line|
+      Subject.create_or_find_by(description: line.strip)
+    end
+  end
+
+  def create_questions_and_answers
+    Subject.all.each do |subject|
+      rand(5..10).times do |_i|
+        params = create_question_params(subject)
+        answers_array = params[:question][:answers_attributes]
+
+        add_answers(answers_array)
+        elect_true_answer(answers_array)
+
+        Question.create!(params[:question])
+      end
+    end
+  end
+
+  def create_question_params(subject = Subject.all.sample)
+    {
+      question: {
+        description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+        subject: subject,
+        answers_attributes: []
+      }
+    }
+  end
+
+  def create_answer_params(correct = false)
+    { description: Faker::Lorem.sentence, correct: correct}
+  end
+
+  def add_answers(answers_array = [])
+    rand(2..5).times do |_j|
+      answers_array.push(
+        create_answer_params(false)
+      )
+    end
+  end
+
+  def elect_true_answer(answers_array = [])
+    selected_index = rand(answers_array.size)
+    answers_array[selected_index] =  create_answer_params(true)
   end
 
   def show_spinner(msg_start, msg_end = "(done)")

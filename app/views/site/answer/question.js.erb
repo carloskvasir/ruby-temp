@@ -1,0 +1,27 @@
+let button = document.getElementById('submit_<%= @answer.question_id %>');
+clean_button_status(button)
+
+if (<%= @answer.correct  %>) {
+  button.classList.add('btn-success')
+  show_Growl('success', 'Parabéns você acertou! 🎉 🎉 🎉')
+} else {
+  button.classList.add('btn-danger')
+  show_Growl('danger', 'Infelismente você ERROU 😭 😭 😭')
+}
+
+button = null
+
+function show_Growl( type = 'success', message){
+  $.bootstrapGrowl(message, {
+    type , // (null, 'info', 'danger', 'success')
+    align: 'right', // ('left', 'right', or 'center')
+    allow_dismiss: true, // If true then will display a cross to close the popup.
+    stackup_spacing: 10 // spacing between consecutively stacked growls.
+  });
+}
+
+function clean_button_status(buttonElement){
+  buttonElement.classList.remove('btn-default');
+  buttonElement.classList.remove('btn-success');
+  buttonElement.classList.remove('btn-danger');
+}
