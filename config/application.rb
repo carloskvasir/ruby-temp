@@ -33,6 +33,7 @@ module TimeToAnswer
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files
+    config.autoloader = :classic
     config.generators.system_tests = nil
   end
 end
