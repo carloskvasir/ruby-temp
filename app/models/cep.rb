@@ -1,6 +1,8 @@
 require 'net/http'
 class CEP
   attr_reader :logradouro, :bairro, :localidade, :uf
+  END_POINT = "https://viacep.com.br/ws/"
+  FORMAT = "json"
 
   def initialize(cep)
     cep_found =  find(cep)
@@ -23,7 +25,7 @@ class CEP
   def find(cep)
     ActiveSupport::JSON.decode(
       Net::HTTP.get(
-        URI("https://viacep.com.br/ws/#{cep}/json")
+        URI("#{END_POINT}#{cep}/#{FORMAT}")
       )
     )
   end
